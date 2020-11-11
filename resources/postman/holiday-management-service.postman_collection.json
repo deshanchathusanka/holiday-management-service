@@ -1,0 +1,78 @@
+{
+	"id": "c95bd5c7-d9fe-62b9-b84b-edc846ef5dcb",
+	"name": "holiday-management-service",
+	"description": "",
+	"order": [
+		"c35f84bd-2b16-289d-87aa-b315fbf499c5",
+		"51f0fee8-db06-9636-9d58-c4976ee1c944"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1605125594350,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "51f0fee8-db06-9636-9d58-c4976ee1c944",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:8080/user/my-leaves?username=prasannna@email.com",
+			"queryParams": [
+				{
+					"key": "username",
+					"value": "prasannna@email.com",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "c95bd5c7-d9fe-62b9-b84b-edc846ef5dcb",
+			"data": null,
+			"dataMode": "params",
+			"name": "my-leaves",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1605125612940,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "c35f84bd-2b16-289d-87aa-b315fbf499c5",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:8080/user/apply-leave",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "c95bd5c7-d9fe-62b9-b84b-edc846ef5dcb",
+			"data": [],
+			"dataMode": "raw",
+			"name": "apply-leave",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1605125596183,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"username\": \"prasannna@email.com\",\n\t\"fromDate\": \"2020-11-10\",\n\t\"toDate\": \"2020-11-20\",\n\t\"coveringEmployee\": \"manager@email.com\",\n\t\"leaveType\": \"CASUAL LEAVE\",\n\t\"reason\": \"leave\"\n}"
+		}
+	]
+}
