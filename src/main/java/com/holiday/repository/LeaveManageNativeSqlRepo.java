@@ -15,18 +15,20 @@ import com.holiday.models.LeaveDetails;
  * @since : 11/11/2020, Wed
  **/
 @Repository
-public class LeaveManageNativeSqlRepo {
+public class LeaveManageNativeSqlRepo
+{
 
     @PersistenceContext
     EntityManager entityManager;
 
 
-    @SuppressWarnings("unchecked")
-    public List<LeaveDetails> getAllLeavesOnStatus(StringBuffer whereQuery) {
+    @SuppressWarnings( "unchecked" )
+    public List<LeaveDetails> getAllLeavesOnStatus( StringBuffer whereQuery )
+    {
 
-	Query query = entityManager.createNativeQuery("select * from leave_details where " + whereQuery,
-		LeaveDetails.class);
-	
-	return query.getResultList();
+        Query query = entityManager.createNativeQuery( "select * from leave_details where " + whereQuery,
+                LeaveDetails.class );
+
+        return query.getResultList();
     }
 }

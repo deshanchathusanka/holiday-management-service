@@ -16,92 +16,107 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @since : 11/11/2020, Wed
  **/
 @Entity
-@Table(name = "employee")
-public class UserInfo {
+@Table( name = "employee" )
+public class UserInfo
+{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
+    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @Column( name = "id" )
     private int id;
 
-    @NotEmpty(message = "E-mail cannot be empty!")
-    @Email(message = "Please provide a valid email!")
-    @Column(name = "email")
+    @NotEmpty( message = "E-mail cannot be empty!" )
+    @Email( message = "Please provide a valid email!" )
+    @Column( name = "email" )
     private String email;
 
-    @NotEmpty(message = "Password cannot be empty!")
-    @Length(min = 5, message = "Choose atleast five characters for password!")
-    @Column(name = "password")
+    @NotEmpty( message = "Password cannot be empty!" )
+    @Length( min = 5, message = "Choose atleast five characters for password!" )
+    @Column( name = "password" )
     private String password;
 
-    @NotEmpty(message = "Please provide a role!")
-    @Column(name = "role")
+    @NotEmpty( message = "Please provide a role!" )
+    @Column( name = "role" )
     private String role;
 
-    @NotEmpty(message = "Please provide first name!")
-    @Column(name = "first_name")
+    @NotEmpty( message = "Please provide first name!" )
+    @Column( name = "first_name" )
     private String firstName;
 
-    @NotEmpty(message = "Please provide last name!")
-    @Column(name = "last_name")
+    @NotEmpty( message = "Please provide last name!" )
+    @Column( name = "last_name" )
     private String lastName;
 
-    @Column(name = "active")
+    @Column( name = "active" )
     private boolean active;
 
-    public int getId() {
-	return id;
+    public int getId()
+    {
+        return id;
     }
 
-    public void setId(int id) {
-	this.id = id;
+    public void setId( int id )
+    {
+        this.id = id;
     }
 
-    public String getEmail() {
-	return email;
+    public String getEmail()
+    {
+        return email;
     }
 
-    public void setEmail(String email) {
-	this.email = email;
+    public void setEmail( String email )
+    {
+        this.email = email;
     }
 
-    public String getPassword() {
-	return password;
+    public String getPassword()
+    {
+        return password;
     }
 
-    public void setPassword(String password) {
-	this.password = password;
+    public void setPassword( String password )
+    {
+        this.password = password;
     }
 
-    public String getRole() {
-	return role;
+    public String getRole()
+    {
+        return role;
     }
 
-    public void setRole(String role) {
-	this.role = role;
+    public void setRole( String role )
+    {
+        this.role = role;
     }
 
-    public String getFirstName() {
-	return firstName;
+    public String getFirstName()
+    {
+        return firstName;
     }
 
-    public void setFirstName(String firstName) {
-	this.firstName = firstName;
+    public void setFirstName( String firstName )
+    {
+        this.firstName = firstName;
     }
 
-    public String getLastName() {
-	return lastName;
+    public String getLastName()
+    {
+        return lastName;
     }
 
-    public void setLastName(String lastName) {
-	this.lastName = lastName;
+    public void setLastName( String lastName )
+    {
+        this.lastName = lastName;
     }
 
-    public boolean isActive() {
-	return active;
+    public boolean isActive()
+    {
+        return active;
     }
 
-    public void setActive(boolean active) {
-	this.active = active;
+    public void setActive( boolean active )
+    {
+        this.active = active;
     }
 }

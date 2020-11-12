@@ -15,22 +15,23 @@ import com.holiday.models.UserInfo;
  * @author : dchat
  * @since : 11/11/2020, Wed
  **/
-@Repository(value = "userInfoRepository")
-public interface UserInfoRepository extends JpaRepository<UserInfo, Serializable> {
+@Repository( value = "userInfoRepository" )
+public interface UserInfoRepository extends JpaRepository<UserInfo,Serializable>
+{
 
-    public UserInfo findByEmail(String email);
+    public UserInfo findByEmail( String email );
 
     public List<UserInfo> findAllByOrderById();
 
-    public UserInfo findById(int id);
+    public UserInfo findById( int id );
 
     @Transactional
     @Modifying
-    @Query(value = "update employee set active=false where id=?", nativeQuery = true)
-    public void blockUser(int id);
+    @Query( value = "update employee set active=false where id=?", nativeQuery = true )
+    public void blockUser( int id );
 
     @Transactional
     @Modifying
-    @Query(value = "update employee set active=true where id=?", nativeQuery = true)
-    public void unBlockUser(int id);
+    @Query( value = "update employee set active=true where id=?", nativeQuery = true )
+    public void unBlockUser( int id );
 }

@@ -7,11 +7,13 @@ import org.springframework.boot.web.support.SpringBootServletInitializer;
  * @author : dchat
  * @since : 11/11/2020, Wed
  **/
-public class ServletInitializer extends SpringBootServletInitializer {
+public class ServletInitializer extends SpringBootServletInitializer
+{
 
-	@Override
-	protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {
-		return application.sources(LeaveManagementSystemApplication.class);
-	}
+    @Override
+    protected SpringApplicationBuilder configure( SpringApplicationBuilder application )
+    {
+        return application.sources( LeaveManagementSystemApplication.class );
+    }
 
 }

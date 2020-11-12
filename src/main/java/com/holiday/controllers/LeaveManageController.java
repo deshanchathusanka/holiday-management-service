@@ -1,25 +1,22 @@
 package com.holiday.controllers;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Iterator;
-import java.util.List;
-
-import com.holiday.util.LeaveValidator;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.view.RedirectView;
-
 import com.holiday.models.LeaveDetails;
 import com.holiday.models.UserInfo;
 import com.holiday.service.LeaveManageService;
 import com.holiday.service.UserInfoService;
+import com.holiday.util.LeaveValidator;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import java.util.List;
+
+import static java.time.temporal.ChronoUnit.DAYS;
 
 /**
  * @author : dchat
@@ -54,12 +51,8 @@ public class LeaveManageController
             return new ResponseEntity<>( HttpStatus.BAD_REQUEST );
         }
 
-        int duration = leaveDetails.getToDate().getDate() - leaveDetails.getFromDate().getDate();
-        leaveDetails.setDuration( duration + 1 );
-        leaveDetails.setActive( true );
-        leaveDetails.setUsername( employee.getEmail() );
-        leaveDetails.setEmployeeName( employee.getFirstName() + " " + employee.getLastName() );
-        leaveDetails.setStatus( LeaveDetails.Status.PENDING.name() );
+        long duration = DAYS.between( leaveDetails.getFromDate(), leaveDetails.getToDate() );
+        updateFields( leaveDetails, employee, duration );
 
         if( duration > 20 )
         {
@@ -73,6 +66,21 @@ public class LeaveManageController
 
         leaveManageService.applyLeave( leaveDetails );
         return new ResponseEntity<>( leaveDetails, HttpStatus.OK );
+    }
+
+    /**
+     * update fields in leave details
+     * @param leaveDetails {@link LeaveDetails}
+     * @param employee {@link UserInfo}
+     * @param duration
+     */
+    private void updateFields( @RequestBody LeaveDetails leaveDetails, UserInfo employee, long duration )
+    {
+        leaveDetails.setDuration( ( int ) ( duration + 1 ) );
+        leaveDetails.setActive( true );
+        leaveDetails.setUsername( employee.getEmail() );
+        leaveDetails.setEmployeeName( employee.getFirstName() + " " + employee.getLastName() );
+        leaveDetails.setStatus( LeaveDetails.Status.PENDING.name() );
     }
 
     @RequestMapping( value = "/user/my-leaves", method = RequestMethod.GET )

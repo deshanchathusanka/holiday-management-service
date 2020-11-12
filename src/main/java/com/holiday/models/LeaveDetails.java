@@ -1,17 +1,10 @@
 package com.holiday.models;
 
-import java.util.Date;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 
 /**
  * @author : dchat
@@ -40,13 +33,11 @@ public class LeaveDetails {
 
     @NotNull(message = "Please provide start date!")
     @Column(name = "from_date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date fromDate;
+    private LocalDate fromDate;
 
     @NotNull(message = "Please provide end date!")
     @Column(name = "to_date")
-    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
-    private Date toDate;
+    private LocalDate toDate;
 
     @NotEmpty(message = "Please select type of leave!")
     @Column(name = "leave_type")
@@ -89,20 +80,24 @@ public class LeaveDetails {
 	this.employeeName = employeeName;
     }
 
-    public Date getFromDate() {
-	return fromDate;
+    public LocalDate getFromDate()
+    {
+        return fromDate;
     }
 
-    public void setFromDate(Date fromDate) {
-	this.fromDate = fromDate;
+    public void setFromDate( LocalDate fromDate )
+    {
+        this.fromDate = fromDate;
     }
 
-    public Date getToDate() {
-	return toDate;
+    public LocalDate getToDate()
+    {
+        return toDate;
     }
 
-    public void setToDate(Date toDate) {
-	this.toDate = toDate;
+    public void setToDate( LocalDate toDate )
+    {
+        this.toDate = toDate;
     }
 
     public String getReason() {
@@ -167,5 +162,8 @@ public class LeaveDetails {
         this.status = status;
     }
 
+    /**
+     * this enum is used to keep the leave status
+     */
     public enum Status { PENDING, APPROVED, REJECT }
 }

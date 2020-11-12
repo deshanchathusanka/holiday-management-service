@@ -14,8 +14,9 @@ import com.holiday.repository.UserInfoRepository;
  * @author : dchat
  * @since : 11/11/2020, Wed
  **/
-@Service(value = "userInfoService")
-public class UserInfoService {
+@Service( value = "userInfoService" )
+public class UserInfoService
+{
 
     @Autowired
     private UserInfoRepository userInfoRepository;
@@ -23,46 +24,54 @@ public class UserInfoService {
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
-    public UserInfo getUserInfo(){
+    public UserInfo getUserInfo()
+    {
 
-	 return this.findUserByEmail(SecurityContextHolder.getContext().getAuthentication().getName());
-	
-    }
-    
-    public UserInfo findUserByEmail(String email) {
-	return userInfoRepository.findByEmail(email);
-    }
-
-    public void saveUser(UserInfo userInfo) {
-	userInfo.setPassword(bCryptPasswordEncoder.encode(userInfo.getPassword()));
-	userInfo.setActive(false);
-	userInfoRepository.save(userInfo);
+        return this.findUserByEmail( SecurityContextHolder.getContext().getAuthentication().getName() );
 
     }
 
-    public List<UserInfo> getUsers() {
-
-	return userInfoRepository.findAllByOrderById();
+    public UserInfo findUserByEmail( String email )
+    {
+        return userInfoRepository.findByEmail( email );
     }
 
-    public UserInfo getUserById(int id) {
-
-	return userInfoRepository.findById(id);
-    }
-
-    public void deleteUser(int id) {
-	userInfoRepository.delete(id);
-    }
-
-    public void blockUser(int id) {
-
-	userInfoRepository.blockUser(id);
+    public void saveUser( UserInfo userInfo )
+    {
+        userInfo.setPassword( bCryptPasswordEncoder.encode( userInfo.getPassword() ) );
+        userInfo.setActive( false );
+        userInfoRepository.save( userInfo );
 
     }
 
-    public void unBlockUser(int id) {
+    public List<UserInfo> getUsers()
+    {
 
-	userInfoRepository.unBlockUser(id);
+        return userInfoRepository.findAllByOrderById();
+    }
+
+    public UserInfo getUserById( int id )
+    {
+
+        return userInfoRepository.findById( id );
+    }
+
+    public void deleteUser( int id )
+    {
+        userInfoRepository.delete( id );
+    }
+
+    public void blockUser( int id )
+    {
+
+        userInfoRepository.blockUser( id );
+
+    }
+
+    public void unBlockUser( int id )
+    {
+
+        userInfoRepository.unBlockUser( id );
     }
 
 }

@@ -20,6 +20,13 @@ public class LeaveValidator
     @Autowired
     private LeaveManageService leaveManageService;
 
+    /**
+     * validate overlapping leave periods with covering employee
+     *
+     * @param leaveDetails     {@link LeaveDetails}
+     * @param coveringEmployee {@link UserInfo}
+     * @return
+     */
     public boolean validateWithCoveringUser( LeaveDetails leaveDetails, UserInfo coveringEmployee )
     {
         List<LeaveDetails> leaveDetailsList = leaveManageService.getAllLeavesOfUser( coveringEmployee.getEmail() );
@@ -29,7 +36,7 @@ public class LeaveValidator
         }
         for( LeaveDetails coveringEmpRange : leaveDetailsList )
         {
-            if( isDuplicate( leaveDetails, coveringEmpRange ) )
+            if( isOverlap( leaveDetails, coveringEmpRange ) )
             {
                 return false;
             }
@@ -37,12 +44,26 @@ public class LeaveValidator
         return true;
     }
 
-    public boolean isDuplicate( LeaveDetails empRange, LeaveDetails coveringEmpRange )
+    /**
+     * check overlapping leave periods
+     *
+     * @param empRange         {@link LeaveDetails}
+     * @param coveringEmpRange {@link LeaveDetails}
+     * @return is overlapping duration
+     */
+    private boolean isOverlap( LeaveDetails empRange, LeaveDetails coveringEmpRange )
     {
-        return !empRange.getToDate().before( coveringEmpRange.getFromDate() ) &&
-                       !coveringEmpRange.getToDate().before( empRange.getFromDate() );
+        return !empRange.getToDate().isBefore( coveringEmpRange.getFromDate() ) &&
+                       !coveringEmpRange.getToDate().isBefore( empRange.getFromDate() );
     }
 
+    /**
+     * check whether requested leave period is eligible for the employee
+     *
+     * @param employee     {@link UserInfo}
+     * @param leaveDetails {@link LeaveDetails}
+     * @return true if requested leave period is eligible for the employee
+     */
     public boolean validateAvailability( UserInfo employee, LeaveDetails leaveDetails )
     {
         List<LeaveDetails> leaveDetailsList = leaveManageService.getAllLeavesOfUser( employee.getEmail() );
