@@ -27,6 +27,7 @@
 	</properties>
 
 	<dependencies>
+
 		<!-- spring boot dependencies-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -90,6 +91,20 @@
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-java8</artifactId>
 			<version>${hibernate.version}</version>
+		</dependency>
+
+		<!-- test dependencies -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-expression</artifactId>
+			<version>4.1.6.RELEASE</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>4.3.2.RELEASE</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
