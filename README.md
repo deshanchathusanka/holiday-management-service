@@ -1,5 +1,4 @@
 # Holiday Management System
-## Simple Application For Managing Employee Leaves.
 
 ### Requirements
 * Java 7 or higher.
@@ -12,4 +11,5 @@
 * Default username is `deshan@email.com` and password is `123456`.
 * Sample postman collection is attached 
 
+Note : You can use any other preferred data base by configuring under application.properties and adding required dependencies
 
