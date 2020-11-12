@@ -14,7 +14,7 @@ import com.holiday.models.LeaveDetails;
  * @since : 11/11/2020, Wed
  **/
 @Repository( value = "leaveManageRepository" )
-public interface LeaveManageRepository extends JpaRepository<LeaveDetails,Serializable>
+public interface HolidayManageRepository extends JpaRepository<LeaveDetails,Serializable>
 {
 
 

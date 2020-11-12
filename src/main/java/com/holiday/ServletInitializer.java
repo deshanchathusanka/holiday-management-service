@@ -13,7 +13,7 @@ public class ServletInitializer extends SpringBootServletInitializer
     @Override
     protected SpringApplicationBuilder configure( SpringApplicationBuilder application )
     {
-        return application.sources( LeaveManagementSystemApplication.class );
+        return application.sources( HolidayManagementSystemApplication.class );
     }
 
 }

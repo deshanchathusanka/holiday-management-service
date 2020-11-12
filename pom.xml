@@ -23,7 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.7</java.version>
 		<hibernate.version>5.4.23.Final</hibernate.version>
-		<start-class>com.holiday.LeaveManagementSystemApplication</start-class>
+		<start-class>com.holiday.HolidayManagementSystemApplication</start-class>
 	</properties>
 
 	<dependencies>

@@ -15,7 +15,7 @@ import com.holiday.models.LeaveDetails;
  * @since : 11/11/2020, Wed
  **/
 @Repository
-public class LeaveManageNativeSqlRepo
+public class HolidayManageNativeSqlRepo
 {
 
     @PersistenceContext

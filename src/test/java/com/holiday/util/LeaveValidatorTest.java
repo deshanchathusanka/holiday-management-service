@@ -2,7 +2,7 @@ package com.holiday.util;
 
 import com.holiday.models.LeaveDetails;
 import com.holiday.models.UserInfo;
-import com.holiday.service.LeaveManageService;
+import com.holiday.service.HolidayManageService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,10 +13,8 @@ import org.mockito.Spy;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
 
-import static org.junit.Assert.*;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.doReturn;
 
@@ -30,7 +28,7 @@ public class LeaveValidatorTest
     private LeaveValidator leaveValidator;
 
     @Spy
-    private LeaveManageService leaveManageService;
+    private HolidayManageService holidayManageService;
 
     @Before
     public void setUp() throws Exception
@@ -55,7 +53,7 @@ public class LeaveValidatorTest
         leavePeriod2.setToDate( LocalDate.of( 2021,3,20 ) );
         List<LeaveDetails> leaveDetailsList=new ArrayList<>( Arrays.asList(leavePeriod1,leavePeriod2) );
         doReturn(leaveDetailsList)
-                .when( leaveManageService )
+                .when( holidayManageService )
                 .getAllLeavesOfUser( anyString() );
 
         // method invocation
@@ -82,7 +80,7 @@ public class LeaveValidatorTest
         leavePeriod2.setToDate( LocalDate.of( 2021,3,20 ) );
         List<LeaveDetails> leaveDetailsList=new ArrayList<>( Arrays.asList(leavePeriod1,leavePeriod2) );
         doReturn(leaveDetailsList)
-                .when( leaveManageService )
+                .when( holidayManageService )
                 .getAllLeavesOfUser( anyString() );
 
         // method invocation
@@ -112,7 +110,7 @@ public class LeaveValidatorTest
         leavePeriod2.setDuration( 5 );
         List<LeaveDetails> leaveDetailsList=new ArrayList<>( Arrays.asList(leavePeriod1,leavePeriod2) );
         doReturn(leaveDetailsList)
-                .when( leaveManageService )
+                .when( holidayManageService )
                 .getAllLeavesOfUser( anyString() );
 
         // method invocation

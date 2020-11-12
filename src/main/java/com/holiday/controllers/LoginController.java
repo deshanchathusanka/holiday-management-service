@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.holiday.models.UserInfo;
-import com.holiday.service.LeaveManageService;
+import com.holiday.service.HolidayManageService;
 import com.holiday.service.UserInfoService;
 
 /**
@@ -30,7 +30,7 @@ public class LoginController
     private UserInfoService userInfoService;
 
     @Autowired
-    LeaveManageService leaveManageService;
+    HolidayManageService holidayManageService;
 
     /**
      * This method opens up the login page if user is not authenticated
